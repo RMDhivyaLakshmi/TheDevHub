@@ -1,0 +1,276 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body id="body" onload="closeReg(this)">
+
+
+
+<nav>
+    <div><a href="../MainPage.html">Home</a></div>
+    <div>Coder's Arena</div>
+    <div id="time">
+    
+    </div>
+</nav>
+
+<form action="display.html" id="form" name="details" method="get">
+
+<div id="nam">
+    <label for="name">Name </label>
+    <input type="text" name="Name" placeholder="Name" id="name" pattern="[A-Za-z]+" oninvalid="alert('Name should contain only alphabets');" onfocus="focusCallback(this)" onblur="blurCallback(this)" required>
+</div>
+<br>
+<br>
+<div>
+    <label for="collegeName">College Name </label>
+    <input type="text" name="CollegeName" placeholder="College Name" id="collegeName" pattern="[A-Za-z]+" oninvalid="alert('College Name should contain only alphabets');" onfocus="focusCallback(this)" onblur="blurCallback(this)" required>
+    <br>
+    <br>
+</div>
+
+<div>
+    <label for="collegeAddress">College Address </label><br>
+    <!--<input type="text" placeholder="College Adddress" id="collegeAddress" pattern="[A-Za-z0-9]" oninvalid="alert('Address should contain only aphanumeric characters');">-->
+    <textarea name="CollegeAddress" onfocus="focusCallback(this)" onblur="blurCallback(this)" id="collegeAddress" cols="30" rows="4" pattern="[A-Za-z0-9]" oninvalid="alert('Address should contain only aphanumeric characters');"></textarea>
+</div>
+<br>
+<br>
+<div>
+    <label for="pin" >Pin </label>
+    <input type="text" placeholder="Pin" name="Pin" id="pin" maxlength="6"  pattern="[0-9]{0,6}" onblur="blurCallback(this)" onfocus="focusCallback(this)" oninvalid="alert('Enter Pin Code compriding numbers of max length 6 ')">
+</div>
+<br>
+<br> 
+<div>
+    <label for="age">Age </label>
+    <input type="text" placeholder="Age" name="Age" id="age" onfocus="focusCallback(this)" onblur="blurCallback(this)" onkeypress="numbers(this)">
+</div>
+<br>
+<br>
+
+
+<div>
+    <label for="dob">Date Of Birth </label>
+    <input type="date" placeholder="dob" onfocus="focusCallback(this)" onblur="blurCallback(this)" name="DOB" id="dob">
+</div>
+<br>
+<br>
+
+
+
+<div>
+    Gender<br>
+    <input type="radio" id="male" name="Gender" value="male">
+    <label for="male">Male </label>
+    <br>
+    <input type="radio" id="female" name="Gender" value="female">
+    <label for="female">Female </label>
+    <br>
+    <br>
+</div>
+
+
+
+
+
+<div>
+    <label for="department">Department</label>
+    <select name="Department" id="department">
+        <option disabled selected value> --Select an Option-- </option>
+        <option value="CSE">CSE</option>
+        <option value="BME">BME</option>
+        <option value="IT">IT</option>
+        <option value="ECE">ECE</option>
+    </select>
+    <br><br>
+</div>
+
+
+
+
+
+<div>
+    <label for="contact">Phone Number </label>
+    <input type="tel" name="Contact" placeholder="Phone Number" onfocus="focusCallback(this)" onblur="blurCallback(this)" pattern="[0-9][0-9]*" maxlength=10 id="contact" oninvalid="alert('Enter Phone Number of max lenght 10 comprinsing of only numbers')" required>
+    <br><br>
+</div>
+
+<div>
+    <label for="email">E-mail ID</label>
+    <input name="Email" type="email" placeholder="Email" onfocus="focusCallback(this)" onblur="blurCallback(this)" required>
+    <br>
+    <br>
+</div>
+
+
+<div>
+    <label for="prg">Programming Skills</label>
+    <div>
+        <span>
+            <ul>
+                <li draggable="true" id="Cpp" ondragstart="drag(event)">C++</li>
+                <li draggable="true" id="py" ondragstart="drag(event)">Python</li>
+                <li draggable="true" id="java" ondragstart="drag(event)">Java</li>
+                <li draggable="true" id="c" ondragstart="drag(event)">C</li>
+            </ul>
+        </span>
+        <span>
+            <textarea onselect="focusCallback(this)" onblur="blurCallback(this)" placeholder="Drag and drop the languages that you know of here" name="ProgrammingSkills" id="prg" cols="30" rows="5" ondrop="drop(event)" ondragover="allowDrop(event)"></textarea>
+        </span>
+        
+    </div>
+
+   
+        
+    <br><br>
+</div>
+
+
+
+
+<div>
+    <label for="hobbies">Hobbies</label>
+    <br>
+    <input type="checkbox" id="drawing" name="hobbies" value="drawing">
+    <label for="drawing">Drawing</label><br>
+    <input type="checkbox" id="yoga" name="hobbies" value="yoga">
+    <label for="yoga">Yoga</label><br>
+    <input type="checkbox" id="badminton" name="hobbies" value="badminton">
+    <label for="badminton">Badminton</label><br>
+    <input type="checkbox" id="sudoku" name="hobbies" value="sudoku">
+    <label for="sudoku">Sudoku</label><br>
+    <input type="checkbox" id="coding" name="hobbies" value="coding">
+    <label for="coding">Coding</label><br><br>
+</div>
+
+
+
+
+<div>
+    <label for="letter">Upload Consent Letter</label><br>
+    <input type="file" id="letter" name="letter">
+    <br>
+    <br>
+</div>
+
+<div>
+    <button>Submit</button><input type="Reset"  value="Reset" style="margin-left:10px;">
+</div>
+
+
+
+<script>
+    "use strict";
+    /*function createTable(details){
+        let form=document.getElementbyId(details);
+        let formDet=new FormData(form);
+        document.write('<head><title>Registration Details</title><link rel="stylesheet" href="style.css"><style>table, th, td{border:1px solid black;}</style></head>')
+        document.writeln("<body><a class='homepage' href='index.html'><span>home</span></a><h1>Coder's Arena</h1><br><hr><br>");
+        document.writeln("<div class='box' style='width: fit-content; display:block; padding:auto; text-align:center; color:white;'><table style='width:400px; margin:10px; font-size:25px;'>");
+        document.writeln("<tr><th>Name</th><td>" + formDet.get('name') + "</td></tr><tr><th>College Name</th><td>" + formDet.get('collegeName') + "</td></tr><tr><th>College Address</th><td>" + formData.get('collegeAddress') +"</td></tr><tr><th>Age</th><td>" + formDet.get('age') + "</td></tr><tr><th>DOB</th><td>" + formDet.get('dob')+ "</td></tr><tr><th>Gender</th><td>"+formDet.get('gender')+"</td></tr><tr><th>Pincode</th><td>" + formDet.get('pin') +"</td></tr><tr><th>Department</th><td>" + formDet.get('department') + "</td></tr><tr><th>Phone Number</th><td>" + formDet.get('contact') +"</td></tr><tr><th>Email ID</th><td>" + formDet.get('email') +"</td></tr><tr><th>Programming skills</th><td>" + formDet.get('prg') +"</td></tr><tr><th>Hobbies</th><td>" + formDet.getAll('hobbies') + "</td></tr></table></div></body>");
+        }*/
+
+    function closeReg() {
+      
+      
+      var deadline = new Date("May 30, 2023 23:59:59"); 
+      var today = new Date();
+    
+
+      if(today.getTime() > deadline.getTime()) {
+        document.getElementById("body").innerHTML = "<p>Sorry Registration closed!</p>";
+      }
+    }
+
+
+    function numbers(ele){
+        if(ele.value.length<3)
+        {
+            if(ele.value.length!=0)
+            {
+                var pattern=/[0-9]{1,3}/;
+                if(!pattern.test(ele.value))
+                {
+                    window.alert('Age can have only numbers');
+                }
+            }
+            
+        }
+        else{
+            window.alert('Length should be less than or equal to 3');
+        }
+
+        }
+    
+    function blurCallback(x)
+    {
+        x.style.background="white";
+    }
+    function focusCallback(x) {
+    x.style.background = "yellowgreen";
+    }
+    var skill=[];
+    function allowDrop(ev) {
+    ev.preventDefault();
+    }
+
+    function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.innerHTML);
+    skill.push(ev.target);
+    }
+
+    function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.value+=(data+" ");
+    for (let i = 0; i < skill.length; i++) {
+            skill[i].remove()
+        } 
+    
+    }
+
+    
+    setInterval(time,0);
+    time();
+    function time(){
+        var date=new Date();
+        var hrs=date.getHours();
+        console.log(hrs);
+        var meridian;
+        if(parseInt(hrs)>12)
+        {
+        meridian='pm';
+        hrs=parseInt(hrs)-12;
+        }
+        else
+        {
+        meridian='am';
+        }
+    
+        var Min=date.getMinutes();
+        var seconds=date.getSeconds();
+        var t=hrs+":"+Min+":"+seconds+" "+meridian;
+        document.getElementById('time').innerHTML=t;
+    }
+</script>
+</form>
+
+
+
+
+</body>
+
+  
+      
+
+
+
+
+</html>

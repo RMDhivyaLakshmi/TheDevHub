@@ -1,0 +1,43 @@
+.row>div{
+    height:100px;
+    width:100px;
+    background-color: yellow;
+    margin-bottom:20px;
+}
+
+.row{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+}
+
+
+.game{
+    width:400px;
+    height:500px;
+    margin-left: 60px;
+    margin-top: 30px;
+}
+
+img{
+    width:100px;
+    height:100px;
+}
+
+body{
+    display:flex;
+    flex-direction: row;
+    
+
+}
+
+.result{
+    background-color: yellow;
+    width:500px;
+    height:500px;
+    padding:100px;
+    padding-bottom:0px;
+    padding-right: 50px;
+    padding-top: 100px;
+
+}

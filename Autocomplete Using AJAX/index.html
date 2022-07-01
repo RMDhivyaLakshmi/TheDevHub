@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <title>Ajax</title>
+</head>
+
+<body>
+
+    <p>Enter Name:</name>
+        <input type="text" name="ajax">
+    <div id="ans">
+    </div>
+
+    <script>
+
+        var inp = document.getElementsByTagName('input')[0];
+        inp.addEventListener('input', function (e) {
+            loadDoc(e.target.value);
+        });
+        function loadDoc(value) {
+            console.log("Success");
+            var xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                console.log("hi");
+                var xmlDoc = this.responseXML;
+                var n = xmlDoc.getElementsByTagName("user").length;
+                console.log(n);
+                var a = document.getElementById("ans");
+                let ans = [];
+                for (var i = 0; i < n; i++) {
+                    var name = xmlDoc.getElementsByTagName('name')[i].childNodes[0].nodeValue;
+                    console.log(name);
+                    var l = value.length;
+                    console.log(name.substring(0, l));
+                    console.log(value);
+
+                    if (name.substring(0, l) === value) {
+                        ans.push(name);
+                        console.log("inside");
+
+                    }
+                }
+
+                console.log(ans)
+                var disp = "<p>";
+                for (var i = 0; i < ans.length; i++) {
+                    disp += ans[i] + "<br> ";
+                }
+                disp += "</p>";
+                a.innerHTML = disp;
+
+
+            }
+
+            xhttp.open('GET', "user.xml", true);
+            xhttp.send();
+
+
+        }
+
+    </script>
+
+</body>
+
+</html>
